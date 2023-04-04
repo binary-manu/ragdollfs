@@ -1,0 +1,227 @@
+- description: Read data from a single segment
+  setup: &simple_one_segment
+    skip: 0
+    overlap: 0
+    segments:
+      - Lorem ipsum
+- description: Read data from a single segment, with skip
+  setup:
+    <<: *simple_one_segment
+    skip: 1
+- description: Read data from a single segment, with more skip
+  setup:
+    <<: *simple_one_segment
+    skip: 10
+- description: Read data from a single segment, all bytes skipped
+  setup:
+    <<: *simple_one_segment
+    skip: 11
+- description: Read data from a single segment, all bytes skipped again
+  setup:
+    <<: *simple_one_segment
+    skip: 9999
+- description: Read data from a single segment, overlap is ignored
+  setup:
+    <<: *simple_one_segment
+    overlap: 1
+
+- description: Read data from two segments
+  setup: &simple_two_segments
+    skip: 0
+    overlap: 0
+    segments:
+      - Lorem ipsum
+      - Foo bar
+- description: Read data from two segments, with skip
+  setup:
+    <<: *simple_two_segments
+    skip: 1
+- description: Read data from two segments, with more skip
+  setup:
+    <<: *simple_two_segments
+    skip: 10
+- description: Read data from two segments, all bytes skipped
+  setup:
+    <<: *simple_two_segments
+    skip: 11
+- description: Read data from two segments, all bytes skipped again
+  setup:
+    <<: *simple_two_segments
+    overlap: 1
+- description: Read data from two segments, with more overlap
+  setup:
+    <<: *simple_two_segments
+    overlap: 4
+- description: Read data from two segments, all bytes from the second segment are skipped
+  setup:
+    <<: *simple_two_segments
+    overlap: 7
+- description: Read data from two segments, all bytes from the second segment are skipped
+  setup:
+    <<: *simple_two_segments
+    overlap: 9999
+- description: Read data from two segments, with both overlap and skip
+  setup:
+    <<: *simple_two_segments
+    overlap: 2
+    skip: 3
+- description: Read data from two segments, swap overlap and skip
+  setup:
+    <<: *simple_two_segments
+    overlap: 3
+    skip: 2
+- description: Read data from two segments, skip all bytes
+  setup:
+    <<: *simple_two_segments
+    overlap: 9999
+    skip: 9999
+
+- description: Read data from many segments
+  setup: &simple_many_segments
+    skip: 0
+    overlap: 0
+    segments: 
+      - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras iaculis neque posuere dapibus dignissim. Aliquam rhoncus elit faucibus enim mollis vehicula. In tincidunt pharetra elit sit amet convallis. Integer pharetra quis lacus non bibendum. Nullam diam felis, auctor eget mattis quis, consequat non arcu. Curabitur facilisis tortor a ligula ullamcorper volutpat. Ut vitae porta metus. Aenean massa lorem, varius ullamcorper interdum id, cursus in neque. Ut venenatis eu nisl et posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris elementum convallis faucibus.
+      - Sed eleifend quis ligula ac condimentum. Sed maximus nisi a neque fermentum accumsan. Etiam augue nisl, fringilla id ante at, feugiat porttitor eros. Phasellus ornare consequat massa, placerat ullamcorper ante pretium a. Aliquam id nisi cursus, tempus massa vel, vulputate nibh. Duis aliquet nisi magna, malesuada porttitor dui pharetra sagittis. Vivamus fermentum venenatis tellus et elementum. Curabitur vulputate risus arcu, dignissim imperdiet purus tempor ut. In scelerisque hendrerit pellentesque. Donec nec ullamcorper ipsum, vitae facilisis elit. Ut sed finibus nisi, vitae rhoncus tellus.
+      - Aenean facilisis orci ut sem condimentum condimentum. Duis vehicula dapibus lacinia. Cras auctor laoreet libero a fringilla. Vivamus aliquam enim nec ipsum sagittis, vitae vestibulum enim vulputate. Nunc aliquet odio lacus, ut efficitur purus congue a. Curabitur convallis, eros vel porta bibendum, justo purus scelerisque libero, quis malesuada arcu libero vel lectus. Phasellus non massa accumsan, gravida magna vitae, luctus est. Fusce et massa finibus, interdum turpis quis, laoreet neque. In ex risus, molestie nec lorem dictum, ornare tincidunt lacus. Proin ac lobortis lacus, sed scelerisque dui. Fusce purus lectus, lacinia tempus erat sed, tincidunt faucibus sapien. Vestibulum lobortis euismod leo eget viverra. Proin eget libero sit amet mi commodo dapibus eu in felis. In eu massa lacus. Donec vestibulum purus non nisi vulputate, id vestibulum nibh suscipit. Pellentesque accumsan felis urna, ac pharetra nulla euismod vel.
+      - Etiam eu lectus molestie justo imperdiet posuere et et metus. In consectetur sapien sed odio interdum, at tincidunt felis gravida. Donec semper, mi et gravida consequat, nisi est sollicitudin purus, sit amet ullamcorper dolor magna in nibh. Fusce lobortis lobortis lacus, eget faucibus massa hendrerit ac. Vestibulum vitae magna vel massa maximus commodo quis id lorem. Sed pretium porta molestie. Morbi lacinia vestibulum risus. Curabitur in nibh quam. Proin imperdiet quis nibh id ullamcorper. Etiam vitae porta arcu. Duis id imperdiet lectus, sit amet scelerisque augue. Nunc dapibus nunc ut metus mattis, a fermentum ex faucibus. Quisque suscipit, felis in consequat vestibulum, augue ante bibendum velit, id maximus mauris lectus at ipsum. Curabitur iaculis ligula sed leo bibendum, et aliquet dolor suscipit. Suspendisse tristique vehicula lorem, ac consequat sapien fringilla a. Cras orci libero, ultricies nec lectus at, laoreet vulputate elit.
+      - Curabitur vehicula tincidunt enim, ac pulvinar velit placerat in. Etiam malesuada libero sit amet hendrerit ullamcorper. Ut congue quis nulla quis sagittis. Ut viverra mi diam, at scelerisque odio laoreet a. Ut molestie velit et ornare hendrerit. Maecenas ullamcorper nibh sit amet fermentum dignissim. Vivamus condimentum metus mi, a aliquam ante euismod ut. Etiam efficitur, sem sit amet egestas suscipit, diam magna mattis urna, ac pharetra arcu ex eget elit. Donec vel augue elit. Suspendisse bibendum porttitor libero, eget dapibus risus suscipit sit amet. Maecenas tempus magna arcu, quis facilisis sem mollis at. In dictum est quis diam gravida consectetur. Quisque cursus augue vitae lacus egestas, eget mattis nisi finibus.
+      - Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus dictum molestie dolor. Sed nec ligula felis. Nullam dui tortor, ornare eget varius id, tristique at magna. Praesent cursus tortor vitae leo ultricies, eu molestie elit facilisis. Integer vitae tortor eget purus cursus eleifend. Nam eget urna elementum, dictum dolor sit amet, elementum nisi. Vivamus non nulla quam. Maecenas pellentesque ultrices erat, sit amet malesuada augue vestibulum quis. Phasellus nec nibh massa.
+      - Nullam facilisis diam turpis, vitae maximus ipsum malesuada eget. Aenean tellus lectus, auctor id molestie a, scelerisque eu ipsum. Etiam nunc quam, varius vitae molestie sed, pulvinar non metus. Duis vel egestas libero. Proin in maximus mi. Praesent eleifend sagittis accumsan. Donec hendrerit augue in mauris mattis lacinia.
+      - Aliquam erat volutpat. Sed euismod porttitor ligula vitae fermentum. Nam id pretium dolor, in mattis augue. Nam rutrum felis ut ante eleifend efficitur. Praesent pretium a arcu ut maximus. Nunc viverra congue massa vel porta. Curabitur condimentum sem eu orci mattis pharetra. Etiam nec diam arcu. Etiam at nisi libero. Praesent cursus metus vitae felis ornare, ac hendrerit urna pharetra.
+      - Morbi lobortis in sapien a porta. Morbi molestie metus quis est pellentesque lobortis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis eget luctus purus, vel volutpat sapien. Etiam massa mi, elementum a rutrum non, venenatis pellentesque metus. Aliquam augue quam, vulputate ac lorem sed, tincidunt luctus ipsum. Etiam mollis ultricies purus in bibendum. Cras ac velit enim. Etiam et ex vel eros iaculis rhoncus.
+      - Duis congue pellentesque vehicula. Aenean lorem dui, luctus ac laoreet vitae, gravida sit amet nisi. Fusce sit amet arcu placerat, faucibus eros quis, consequat purus. Quisque tempus blandit lorem, quis convallis lacus convallis ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent volutpat ante quis urna mattis, ut vestibulum augue ultrices. Sed ac vulputate velit. Fusce eget aliquam eros. Nam sed porta mauris, non facilisis magna. Curabitur quam neque, consectetur ut lorem et, pharetra posuere nisl. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris euismod nisi in ipsum aliquet lobortis. Vestibulum et lacus nibh. Fusce vitae consectetur eros.
+      - Pellentesque eu cursus sapien. Fusce quis maximus lacus, ac volutpat justo. Vivamus mi dolor, mattis sit amet diam quis, eleifend hendrerit elit. Maecenas eu sodales lacus. Donec et dolor a enim tincidunt molestie vitae non nibh. Praesent varius risus et eros aliquam maximus. Proin ullamcorper eget tortor ac sollicitudin. Cras id sollicitudin velit. In eros nunc, pharetra vel purus nec, auctor porttitor sem. Vestibulum nec nunc eros.
+      - Donec scelerisque nunc dolor, efficitur porttitor urna convallis vitae. Mauris rutrum, odio vel iaculis auctor, orci dolor ornare nulla, sit amet imperdiet diam nisl in eros. Nullam non aliquet odio, finibus condimentum mauris. Vivamus vitae auctor sapien. Quisque est libero, elementum at leo sed, sodales accumsan neque. In vitae tortor sit amet libero dapibus cursus et sed sem. Vestibulum interdum enim eget dolor sollicitudin fringilla et sit amet lacus.
+      - Vestibulum et lorem sem. Mauris mollis est quis odio vehicula, nec ultricies nulla volutpat. Aliquam pellentesque convallis erat, et finibus nibh pulvinar sed. Suspendisse potenti. Maecenas ornare arcu sollicitudin mauris lacinia, sed pellentesque nunc laoreet. In at justo ut orci aliquet sagittis sit amet a quam. Nam porttitor massa eros, nec volutpat eros vehicula non. In tempus tortor at ligula iaculis facilisis. Nulla lorem metus, maximus eu elit nec, finibus pulvinar felis. In hac habitasse platea dictumst.
+      - Nullam pellentesque pretium mauris ac laoreet. Quisque sit amet vestibulum nibh, non interdum lacus. Pellentesque porta, sapien fermentum dignissim convallis, tortor dolor semper justo, vitae efficitur quam augue vitae mauris. Nam mattis sed purus sed pulvinar. Praesent sed accumsan nisl. Ut augue dolor, feugiat at tellus a, elementum pharetra eros. Cras faucibus augue nulla, a pretium dui malesuada feugiat. Nullam vel tincidunt nulla.
+      - Nullam accumsan cursus orci, id dapibus leo porta sed. Donec suscipit, quam eget volutpat fringilla, sem augue ornare libero, a ullamcorper mi ex in massa. Nam ornare diam eget vulputate rhoncus. Duis porttitor facilisis felis, eget feugiat mi interdum convallis. In id consequat mauris. Duis pretium lobortis est sit amet rutrum. Donec volutpat turpis id nibh semper ultrices. Donec bibendum congue purus, et eleifend odio euismod eu.
+      - Phasellus vitae ante et nisi sollicitudin sagittis. Mauris finibus nisl orci, in mattis nibh rhoncus et. Morbi quis arcu volutpat nulla gravida facilisis sit amet volutpat lectus. Nullam id libero purus. Donec et ex tellus. Donec in vulputate metus. Sed feugiat eros in arcu viverra dapibus. 
+- description: Read data from two segments, with skip
+  setup:
+    <<: *simple_many_segments
+    skip: 1
+- description: Read data from two segments, with more skip
+  setup:
+    <<: *simple_many_segments
+    skip: 10
+- description: Read data from two segments, all bytes skipped
+  setup:
+    <<: *simple_many_segments
+    skip: 11
+- description: Read data from two segments, all bytes skipped again
+  setup:
+    <<: *simple_many_segments
+    skip: 9999
+- description: Read data from two segments, with overlap
+  setup:
+    <<: *simple_many_segments
+    overlap: 1
+- description: Read data from two segments, with more overlap
+  setup:
+    <<: *simple_many_segments
+    overlap: 4
+- description: Read data from two segments, all bytes from the second segment are skipped
+  setup:
+    <<: *simple_many_segments
+    overlap: 7
+- description: Read data from two segments, all bytes from the second segment are skipped
+  setup:
+    <<: *simple_many_segments
+    overlap: 9999
+- description: Read data from two segments, with both overlap and skip
+  setup:
+    <<: *simple_many_segments
+    overlap: 2
+    skip: 3
+- description: Read data from two segments, swap overlap and skip
+  setup:
+    <<: *simple_many_segments
+    overlap: 3
+    skip: 2
+- description: Read data from two segments, skip all bytes
+  setup:
+    <<: *simple_many_segments
+    overlap: 9999
+    skip: 9999
+
+- description: Read data from many segments and skip small ones
+  setup:
+    skip: 0
+    overlap: 24
+    segments: 
+      - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras iaculis neque posuere dapibus dignissim. Aliquam rhoncus elit faucibus enim mollis vehicula. In tincidunt pharetra elit sit amet convallis. Integer pharetra quis lacus non bibendum. Nullam diam felis, auctor eget mattis quis, consequat non arcu. Curabitur facilisis tortor a ligula ullamcorper volutpat. Ut vitae porta metus. Aenean massa lorem, varius ullamcorper interdum id, cursus in neque. Ut venenatis eu nisl et posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris elementum convallis faucibus.
+      - short
+      - Aenean facilisis orci ut sem condimentum condimentum. Duis vehicula dapibus lacinia. Cras auctor laoreet libero a fringilla. Vivamus aliquam enim nec ipsum sagittis, vitae vestibulum enim vulputate. Nunc aliquet odio lacus, ut efficitur purus congue a. Curabitur convallis, eros vel porta bibendum, justo purus scelerisque libero, quis malesuada arcu libero vel lectus. Phasellus non massa accumsan, gravida magna vitae, luctus est. Fusce et massa finibus, interdum turpis quis, laoreet neque. In ex risus, molestie nec lorem dictum, ornare tincidunt lacus. Proin ac lobortis lacus, sed scelerisque dui. Fusce purus lectus, lacinia tempus erat sed, tincidunt faucibus sapien. Vestibulum lobortis euismod leo eget viverra. Proin eget libero sit amet mi commodo dapibus eu in felis. In eu massa lacus. Donec vestibulum purus non nisi vulputate, id vestibulum nibh suscipit. Pellentesque accumsan felis urna, ac pharetra nulla euismod vel.
+      - Etiam eu lectus molestie justo imperdiet posuere et et metus. In consectetur sapien sed odio interdum, at tincidunt felis gravida. Donec semper, mi et gravida consequat, nisi est sollicitudin purus, sit amet ullamcorper dolor magna in nibh. Fusce lobortis lobortis lacus, eget faucibus massa hendrerit ac. Vestibulum vitae magna vel massa maximus commodo quis id lorem. Sed pretium porta molestie. Morbi lacinia vestibulum risus. Curabitur in nibh quam. Proin imperdiet quis nibh id ullamcorper. Etiam vitae porta arcu. Duis id imperdiet lectus, sit amet scelerisque augue. Nunc dapibus nunc ut metus mattis, a fermentum ex faucibus. Quisque suscipit, felis in consequat vestibulum, augue ante bibendum velit, id maximus mauris lectus at ipsum. Curabitur iaculis ligula sed leo bibendum, et aliquet dolor suscipit. Suspendisse tristique vehicula lorem, ac consequat sapien fringilla a. Cras orci libero, ultricies nec lectus at, laoreet vulputate elit.
+      - Curabitur vehicula tincidunt enim, ac pulvinar velit placerat in. Etiam malesuada libero sit amet hendrerit ullamcorper. Ut congue quis nulla quis sagittis. Ut viverra mi diam, at scelerisque odio laoreet a. Ut molestie velit et ornare hendrerit. Maecenas ullamcorper nibh sit amet fermentum dignissim. Vivamus condimentum metus mi, a aliquam ante euismod ut. Etiam efficitur, sem sit amet egestas suscipit, diam magna mattis urna, ac pharetra arcu ex eget elit. Donec vel augue elit. Suspendisse bibendum porttitor libero, eget dapibus risus suscipit sit amet. Maecenas tempus magna arcu, quis facilisis sem mollis at. In dictum est quis diam gravida consectetur. Quisque cursus augue vitae lacus egestas, eget mattis nisi finibus.
+      - Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus dictum molestie dolor. Sed nec ligula felis. Nullam dui tortor, ornare eget varius id, tristique at magna. Praesent cursus tortor vitae leo ultricies, eu molestie elit facilisis. Integer vitae tortor eget purus cursus eleifend. Nam eget urna elementum, dictum dolor sit amet, elementum nisi. Vivamus non nulla quam. Maecenas pellentesque ultrices erat, sit amet malesuada augue vestibulum quis. Phasellus nec nibh massa.
+      - short
+      - Aliquam erat volutpat. Sed euismod porttitor ligula vitae fermentum. Nam id pretium dolor, in mattis augue. Nam rutrum felis ut ante eleifend efficitur. Praesent pretium a arcu ut maximus. Nunc viverra congue massa vel porta. Curabitur condimentum sem eu orci mattis pharetra. Etiam nec diam arcu. Etiam at nisi libero. Praesent cursus metus vitae felis ornare, ac hendrerit urna pharetra.
+      - Morbi lobortis in sapien a porta. Morbi molestie metus quis est pellentesque lobortis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis eget luctus purus, vel volutpat sapien. Etiam massa mi, elementum a rutrum non, venenatis pellentesque metus. Aliquam augue quam, vulputate ac lorem sed, tincidunt luctus ipsum. Etiam mollis ultricies purus in bibendum. Cras ac velit enim. Etiam et ex vel eros iaculis rhoncus.
+      - Duis congue pellentesque vehicula. Aenean lorem dui, luctus ac laoreet vitae, gravida sit amet nisi. Fusce sit amet arcu placerat, faucibus eros quis, consequat purus. Quisque tempus blandit lorem, quis convallis lacus convallis ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent volutpat ante quis urna mattis, ut vestibulum augue ultrices. Sed ac vulputate velit. Fusce eget aliquam eros. Nam sed porta mauris, non facilisis magna. Curabitur quam neque, consectetur ut lorem et, pharetra posuere nisl. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris euismod nisi in ipsum aliquet lobortis. Vestibulum et lacus nibh. Fusce vitae consectetur eros.
+      - short
+      - short
+      - Vestibulum et lorem sem. Mauris mollis est quis odio vehicula, nec ultricies nulla volutpat. Aliquam pellentesque convallis erat, et finibus nibh pulvinar sed. Suspendisse potenti. Maecenas ornare arcu sollicitudin mauris lacinia, sed pellentesque nunc laoreet. In at justo ut orci aliquet sagittis sit amet a quam. Nam porttitor massa eros, nec volutpat eros vehicula non. In tempus tortor at ligula iaculis facilisis. Nulla lorem metus, maximus eu elit nec, finibus pulvinar felis. In hac habitasse platea dictumst.
+      - Nullam pellentesque pretium mauris ac laoreet. Quisque sit amet vestibulum nibh, non interdum lacus. Pellentesque porta, sapien fermentum dignissim convallis, tortor dolor semper justo, vitae efficitur quam augue vitae mauris. Nam mattis sed purus sed pulvinar. Praesent sed accumsan nisl. Ut augue dolor, feugiat at tellus a, elementum pharetra eros. Cras faucibus augue nulla, a pretium dui malesuada feugiat. Nullam vel tincidunt nulla.
+      - Nullam accumsan cursus orci, id dapibus leo porta sed. Donec suscipit, quam eget volutpat fringilla, sem augue ornare libero, a ullamcorper mi ex in massa. Nam ornare diam eget vulputate rhoncus. Duis porttitor facilisis felis, eget feugiat mi interdum convallis. In id consequat mauris. Duis pretium lobortis est sit amet rutrum. Donec volutpat turpis id nibh semper ultrices. Donec bibendum congue purus, et eleifend odio euismod eu.
+      - short
+
+- description: Read data from many segments and skip small ones, including the first
+  setup:
+    skip: 24
+    overlap: 24
+    segments: 
+      - short
+      - short
+      - Aenean facilisis orci ut sem condimentum condimentum. Duis vehicula dapibus lacinia. Cras auctor laoreet libero a fringilla. Vivamus aliquam enim nec ipsum sagittis, vitae vestibulum enim vulputate. Nunc aliquet odio lacus, ut efficitur purus congue a. Curabitur convallis, eros vel porta bibendum, justo purus scelerisque libero, quis malesuada arcu libero vel lectus. Phasellus non massa accumsan, gravida magna vitae, luctus est. Fusce et massa finibus, interdum turpis quis, laoreet neque. In ex risus, molestie nec lorem dictum, ornare tincidunt lacus. Proin ac lobortis lacus, sed scelerisque dui. Fusce purus lectus, lacinia tempus erat sed, tincidunt faucibus sapien. Vestibulum lobortis euismod leo eget viverra. Proin eget libero sit amet mi commodo dapibus eu in felis. In eu massa lacus. Donec vestibulum purus non nisi vulputate, id vestibulum nibh suscipit. Pellentesque accumsan felis urna, ac pharetra nulla euismod vel.
+      - Etiam eu lectus molestie justo imperdiet posuere et et metus. In consectetur sapien sed odio interdum, at tincidunt felis gravida. Donec semper, mi et gravida consequat, nisi est sollicitudin purus, sit amet ullamcorper dolor magna in nibh. Fusce lobortis lobortis lacus, eget faucibus massa hendrerit ac. Vestibulum vitae magna vel massa maximus commodo quis id lorem. Sed pretium porta molestie. Morbi lacinia vestibulum risus. Curabitur in nibh quam. Proin imperdiet quis nibh id ullamcorper. Etiam vitae porta arcu. Duis id imperdiet lectus, sit amet scelerisque augue. Nunc dapibus nunc ut metus mattis, a fermentum ex faucibus. Quisque suscipit, felis in consequat vestibulum, augue ante bibendum velit, id maximus mauris lectus at ipsum. Curabitur iaculis ligula sed leo bibendum, et aliquet dolor suscipit. Suspendisse tristique vehicula lorem, ac consequat sapien fringilla a. Cras orci libero, ultricies nec lectus at, laoreet vulputate elit.
+      - Curabitur vehicula tincidunt enim, ac pulvinar velit placerat in. Etiam malesuada libero sit amet hendrerit ullamcorper. Ut congue quis nulla quis sagittis. Ut viverra mi diam, at scelerisque odio laoreet a. Ut molestie velit et ornare hendrerit. Maecenas ullamcorper nibh sit amet fermentum dignissim. Vivamus condimentum metus mi, a aliquam ante euismod ut. Etiam efficitur, sem sit amet egestas suscipit, diam magna mattis urna, ac pharetra arcu ex eget elit. Donec vel augue elit. Suspendisse bibendum porttitor libero, eget dapibus risus suscipit sit amet. Maecenas tempus magna arcu, quis facilisis sem mollis at. In dictum est quis diam gravida consectetur. Quisque cursus augue vitae lacus egestas, eget mattis nisi finibus.
+      - Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus dictum molestie dolor. Sed nec ligula felis. Nullam dui tortor, ornare eget varius id, tristique at magna. Praesent cursus tortor vitae leo ultricies, eu molestie elit facilisis. Integer vitae tortor eget purus cursus eleifend. Nam eget urna elementum, dictum dolor sit amet, elementum nisi. Vivamus non nulla quam. Maecenas pellentesque ultrices erat, sit amet malesuada augue vestibulum quis. Phasellus nec nibh massa.
+      - short
+      - Aliquam erat volutpat. Sed euismod porttitor ligula vitae fermentum. Nam id pretium dolor, in mattis augue. Nam rutrum felis ut ante eleifend efficitur. Praesent pretium a arcu ut maximus. Nunc viverra congue massa vel porta. Curabitur condimentum sem eu orci mattis pharetra. Etiam nec diam arcu. Etiam at nisi libero. Praesent cursus metus vitae felis ornare, ac hendrerit urna pharetra.
+      - Morbi lobortis in sapien a porta. Morbi molestie metus quis est pellentesque lobortis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis eget luctus purus, vel volutpat sapien. Etiam massa mi, elementum a rutrum non, venenatis pellentesque metus. Aliquam augue quam, vulputate ac lorem sed, tincidunt luctus ipsum. Etiam mollis ultricies purus in bibendum. Cras ac velit enim. Etiam et ex vel eros iaculis rhoncus.
+      - Duis congue pellentesque vehicula. Aenean lorem dui, luctus ac laoreet vitae, gravida sit amet nisi. Fusce sit amet arcu placerat, faucibus eros quis, consequat purus. Quisque tempus blandit lorem, quis convallis lacus convallis ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent volutpat ante quis urna mattis, ut vestibulum augue ultrices. Sed ac vulputate velit. Fusce eget aliquam eros. Nam sed porta mauris, non facilisis magna. Curabitur quam neque, consectetur ut lorem et, pharetra posuere nisl. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris euismod nisi in ipsum aliquet lobortis. Vestibulum et lacus nibh. Fusce vitae consectetur eros.
+      - short
+      - short
+      - Vestibulum et lorem sem. Mauris mollis est quis odio vehicula, nec ultricies nulla volutpat. Aliquam pellentesque convallis erat, et finibus nibh pulvinar sed. Suspendisse potenti. Maecenas ornare arcu sollicitudin mauris lacinia, sed pellentesque nunc laoreet. In at justo ut orci aliquet sagittis sit amet a quam. Nam porttitor massa eros, nec volutpat eros vehicula non. In tempus tortor at ligula iaculis facilisis. Nulla lorem metus, maximus eu elit nec, finibus pulvinar felis. In hac habitasse platea dictumst.
+      - Nullam pellentesque pretium mauris ac laoreet. Quisque sit amet vestibulum nibh, non interdum lacus. Pellentesque porta, sapien fermentum dignissim convallis, tortor dolor semper justo, vitae efficitur quam augue vitae mauris. Nam mattis sed purus sed pulvinar. Praesent sed accumsan nisl. Ut augue dolor, feugiat at tellus a, elementum pharetra eros. Cras faucibus augue nulla, a pretium dui malesuada feugiat. Nullam vel tincidunt nulla.
+      - Nullam accumsan cursus orci, id dapibus leo porta sed. Donec suscipit, quam eget volutpat fringilla, sem augue ornare libero, a ullamcorper mi ex in massa. Nam ornare diam eget vulputate rhoncus. Duis porttitor facilisis felis, eget feugiat mi interdum convallis. In id consequat mauris. Duis pretium lobortis est sit amet rutrum. Donec volutpat turpis id nibh semper ultrices. Donec bibendum congue purus, et eleifend odio euismod eu.
+      - short
+
+- description: Read data from many segments and skip small ones, including the first but not the second
+  setup:
+    skip: 24
+    overlap: 24
+    segments: 
+      - short
+      - Sed eleifend quis ligula ac condimentum. Sed maximus nisi a neque fermentum accumsan. Etiam augue nisl, fringilla id ante at, feugiat porttitor eros. Phasellus ornare consequat massa, placerat ullamcorper ante pretium a. Aliquam id nisi cursus, tempus massa vel, vulputate nibh. Duis aliquet nisi magna, malesuada porttitor dui pharetra sagittis. Vivamus fermentum venenatis tellus et elementum. Curabitur vulputate risus arcu, dignissim imperdiet purus tempor ut. In scelerisque hendrerit pellentesque. Donec nec ullamcorper ipsum, vitae facilisis elit. Ut sed finibus nisi, vitae rhoncus tellus.
+      - Aenean facilisis orci ut sem condimentum condimentum. Duis vehicula dapibus lacinia. Cras auctor laoreet libero a fringilla. Vivamus aliquam enim nec ipsum sagittis, vitae vestibulum enim vulputate. Nunc aliquet odio lacus, ut efficitur purus congue a. Curabitur convallis, eros vel porta bibendum, justo purus scelerisque libero, quis malesuada arcu libero vel lectus. Phasellus non massa accumsan, gravida magna vitae, luctus est. Fusce et massa finibus, interdum turpis quis, laoreet neque. In ex risus, molestie nec lorem dictum, ornare tincidunt lacus. Proin ac lobortis lacus, sed scelerisque dui. Fusce purus lectus, lacinia tempus erat sed, tincidunt faucibus sapien. Vestibulum lobortis euismod leo eget viverra. Proin eget libero sit amet mi commodo dapibus eu in felis. In eu massa lacus. Donec vestibulum purus non nisi vulputate, id vestibulum nibh suscipit. Pellentesque accumsan felis urna, ac pharetra nulla euismod vel.
+      - Etiam eu lectus molestie justo imperdiet posuere et et metus. In consectetur sapien sed odio interdum, at tincidunt felis gravida. Donec semper, mi et gravida consequat, nisi est sollicitudin purus, sit amet ullamcorper dolor magna in nibh. Fusce lobortis lobortis lacus, eget faucibus massa hendrerit ac. Vestibulum vitae magna vel massa maximus commodo quis id lorem. Sed pretium porta molestie. Morbi lacinia vestibulum risus. Curabitur in nibh quam. Proin imperdiet quis nibh id ullamcorper. Etiam vitae porta arcu. Duis id imperdiet lectus, sit amet scelerisque augue. Nunc dapibus nunc ut metus mattis, a fermentum ex faucibus. Quisque suscipit, felis in consequat vestibulum, augue ante bibendum velit, id maximus mauris lectus at ipsum. Curabitur iaculis ligula sed leo bibendum, et aliquet dolor suscipit. Suspendisse tristique vehicula lorem, ac consequat sapien fringilla a. Cras orci libero, ultricies nec lectus at, laoreet vulputate elit.
+      - Curabitur vehicula tincidunt enim, ac pulvinar velit placerat in. Etiam malesuada libero sit amet hendrerit ullamcorper. Ut congue quis nulla quis sagittis. Ut viverra mi diam, at scelerisque odio laoreet a. Ut molestie velit et ornare hendrerit. Maecenas ullamcorper nibh sit amet fermentum dignissim. Vivamus condimentum metus mi, a aliquam ante euismod ut. Etiam efficitur, sem sit amet egestas suscipit, diam magna mattis urna, ac pharetra arcu ex eget elit. Donec vel augue elit. Suspendisse bibendum porttitor libero, eget dapibus risus suscipit sit amet. Maecenas tempus magna arcu, quis facilisis sem mollis at. In dictum est quis diam gravida consectetur. Quisque cursus augue vitae lacus egestas, eget mattis nisi finibus.
+      - Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus dictum molestie dolor. Sed nec ligula felis. Nullam dui tortor, ornare eget varius id, tristique at magna. Praesent cursus tortor vitae leo ultricies, eu molestie elit facilisis. Integer vitae tortor eget purus cursus eleifend. Nam eget urna elementum, dictum dolor sit amet, elementum nisi. Vivamus non nulla quam. Maecenas pellentesque ultrices erat, sit amet malesuada augue vestibulum quis. Phasellus nec nibh massa.
+      - short
+      - Aliquam erat volutpat. Sed euismod porttitor ligula vitae fermentum. Nam id pretium dolor, in mattis augue. Nam rutrum felis ut ante eleifend efficitur. Praesent pretium a arcu ut maximus. Nunc viverra congue massa vel porta. Curabitur condimentum sem eu orci mattis pharetra. Etiam nec diam arcu. Etiam at nisi libero. Praesent cursus metus vitae felis ornare, ac hendrerit urna pharetra.
+      - Morbi lobortis in sapien a porta. Morbi molestie metus quis est pellentesque lobortis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis eget luctus purus, vel volutpat sapien. Etiam massa mi, elementum a rutrum non, venenatis pellentesque metus. Aliquam augue quam, vulputate ac lorem sed, tincidunt luctus ipsum. Etiam mollis ultricies purus in bibendum. Cras ac velit enim. Etiam et ex vel eros iaculis rhoncus.
+      - Duis congue pellentesque vehicula. Aenean lorem dui, luctus ac laoreet vitae, gravida sit amet nisi. Fusce sit amet arcu placerat, faucibus eros quis, consequat purus. Quisque tempus blandit lorem, quis convallis lacus convallis ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent volutpat ante quis urna mattis, ut vestibulum augue ultrices. Sed ac vulputate velit. Fusce eget aliquam eros. Nam sed porta mauris, non facilisis magna. Curabitur quam neque, consectetur ut lorem et, pharetra posuere nisl. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris euismod nisi in ipsum aliquet lobortis. Vestibulum et lacus nibh. Fusce vitae consectetur eros.
+      - short
+      - short
+      - Vestibulum et lorem sem. Mauris mollis est quis odio vehicula, nec ultricies nulla volutpat. Aliquam pellentesque convallis erat, et finibus nibh pulvinar sed. Suspendisse potenti. Maecenas ornare arcu sollicitudin mauris lacinia, sed pellentesque nunc laoreet. In at justo ut orci aliquet sagittis sit amet a quam. Nam porttitor massa eros, nec volutpat eros vehicula non. In tempus tortor at ligula iaculis facilisis. Nulla lorem metus, maximus eu elit nec, finibus pulvinar felis. In hac habitasse platea dictumst.
+      - Nullam pellentesque pretium mauris ac laoreet. Quisque sit amet vestibulum nibh, non interdum lacus. Pellentesque porta, sapien fermentum dignissim convallis, tortor dolor semper justo, vitae efficitur quam augue vitae mauris. Nam mattis sed purus sed pulvinar. Praesent sed accumsan nisl. Ut augue dolor, feugiat at tellus a, elementum pharetra eros. Cras faucibus augue nulla, a pretium dui malesuada feugiat. Nullam vel tincidunt nulla.
+      - Nullam accumsan cursus orci, id dapibus leo porta sed. Donec suscipit, quam eget volutpat fringilla, sem augue ornare libero, a ullamcorper mi ex in massa. Nam ornare diam eget vulputate rhoncus. Duis porttitor facilisis felis, eget feugiat mi interdum convallis. In id consequat mauris. Duis pretium lobortis est sit amet rutrum. Donec volutpat turpis id nibh semper ultrices. Donec bibendum congue purus, et eleifend odio euismod eu.
+      - short
+
+- description: One empty segment
+  setup:
+    skip: 0
+    overlap: 0
+    segments: 
+      - ""
+
+- description: Two empty segment
+  setup:
+    skip: 0
+    overlap: 0
+    segments: 
+      - ""
+      - ""

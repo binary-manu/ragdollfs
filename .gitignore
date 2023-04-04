@@ -1,0 +1,6 @@
+CMakeFiles/
+*.o
+Makefile
+CMake*.txt
+*.cmake
+ragdollfs
